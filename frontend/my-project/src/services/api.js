@@ -77,6 +77,14 @@ export const votingAPI = {
   closePoll: (pollId) => api.put(`/voting/${pollId}/close`, {}, { headers: { Authorization: `Bearer ${getToken()}` } })
 };
 
+// Poll API (alias for voting)
+export const pollAPI = {
+  createPoll: (data) => api.post('/voting', data, { headers: { Authorization: `Bearer ${getToken()}` } }),
+  getPollsByTrip: (tripId) => api.get(`/voting/trip/${tripId}`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+  votePoll: (pollId, optionId) => api.post(`/voting/${pollId}/vote`, { optionId }, { headers: { Authorization: `Bearer ${getToken()}` } }),
+  closePoll: (pollId) => api.put(`/voting/${pollId}/close`, {}, { headers: { Authorization: `Bearer ${getToken()}` } })
+};
+
 // Settlement API
 export const settlementAPI = {
   getSettlement: (tripId) => api.get(`/settlements/trip/${tripId}`, { headers: { Authorization: `Bearer ${getToken()}` } }),

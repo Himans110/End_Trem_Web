@@ -4,6 +4,7 @@ import { tripAPI, expenseAPI, itineraryAPI, settlementAPI, getSocket } from '../
 import Itinerary from './Itinerary';
 import ExpenseTracker from './ExpenseTracker';
 import Settlement from './Settlement';
+import Poll from './Poll';
 import '../styles/TripDetail.css';
 
 const TripDetail = () => {
@@ -86,6 +87,12 @@ const TripDetail = () => {
           💰 Expenses
         </button>
         <button 
+          className={`tab-btn ${activeTab === 'polls' ? 'active' : ''}`}
+          onClick={() => setActiveTab('polls')}
+        >
+          📊 Polls
+        </button>
+        <button 
           className={`tab-btn ${activeTab === 'settlement' ? 'active' : ''}`}
           onClick={() => setActiveTab('settlement')}
         >
@@ -96,6 +103,7 @@ const TripDetail = () => {
       <div className="tab-content">
         {activeTab === 'itinerary' && <Itinerary tripId={tripId} trip={trip} />}
         {activeTab === 'expenses' && <ExpenseTracker tripId={tripId} trip={trip} />}
+        {activeTab === 'polls' && <Poll tripId={tripId} />}
         {activeTab === 'settlement' && <Settlement tripId={tripId} trip={trip} />}
       </div>
     </div>
